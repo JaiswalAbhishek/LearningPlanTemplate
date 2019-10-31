@@ -1,0 +1,48 @@
+
+// SKILL TABLE
+
+create table Skill(
+
+skillID int(20) primary key,
+skillName varchar(30),
+courseAttached varchar(512)
+);
+
+
+// LearningPlanTemplate
+
+create table LearningPlanTemplate(
+learningPlanID int(20) PRIMARY KEY,
+planName varchar(30),
+creationDate Date,
+modifiedDate Date,
+skills varchar(200),
+createrUserID varchar(100),
+FOREIGN KEY (createrUserID) REFERENCES User(employeeUserID)
+);
+
+
+// LearningPlan
+
+create table LearningPlan(
+assignedId int(20) NOT NULL auto_increment,
+employeeUserID varchar(100),
+learningPlanID int(20),
+startDate Date,
+endDate Date,
+ PRIMARY KEY (assignedId )
+);
+
+
+//User
+           
+
+create table User(
+
+empID int(20),
+empName varchar(30),
+employeeUserID varchar(100) UNIQUE,
+role varchar(20),
+password varchar(30),
+PRIMARY KEY (empID)
+);
